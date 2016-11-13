@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/animate-fonts.css">
+    <link rel="stylesheet" href="css/aos.css"/>
+
+
+</head>
+<body class="gray-bg">
+
+<!--nav-->
+<div id="menu2">
+    <nav class="navbar navbar-inverse">
+        <div class="container" align="center">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="img/wight-logo.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav  pull-right">
+                    <li class="divider-right hidden-sm hidden-xs"></li>
+
+                    <li><a class="fade1" href="#">
+                        كيف نعمل
+                    </a></li>
+                    <li><a class="fade1" href="#">
+                        أعضاء
+                    </a></li>
+                    <li><a class="fade1" href="#">
+                        وظائف
+                    </a></li>
+                    <li><a class="fade1" href="#">
+                        فرق
+                    </a></li>
+                    <li class="divider-left hidden-sm hidden-xs"></li>
+
+                    <li>
+                        <div class="form-group inner-addon right-addon">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </li>
+                    <li class="divider-right hidden-sm hidden-xs"></li>
+                </ul>
+                <ul class=" nav navbar-nav  pull-left">
+                    <li>
+
+
+                        <a class="fade1" href="#" style="padding-left:0">
+                            تسجيل دخول
+                            <img src="img/user2.png" class="img-circle" width="42" height="42" alt=""/>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--#nav-->
+<!--page content-->
+<div class="container reg-page" align="center">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+
+            <form method="POST" action="#" role="form">
+                <div class="form-group">
+                    <h2 class="bold-font">إنشــاء حسـاب جديد</h2>
+                </div>
+                <div class="form-group">
+                    <input id="signupName" type="text" maxlength="50" class="form-control" placeholder="الأسم">
+                </div>
+                <div class="form-group">
+                    <input id="signupEmail" type="email" maxlength="50" class="form-control"
+                           placeholder="البريد الإلكتروني ">
+                </div>
+                <div class="form-group">
+                    <input id="signupPassword" type="password" maxlength="25" class="form-control"
+                           placeholder="كلمة المرور" length="40">
+                </div>
+                <div class="form-group">
+                    <input id="signupPasswordagain" type="password" maxlength="25" class="form-control"
+                           placeholder="تأكيد كلمة المرور">
+                </div>
+                <div class="form-group">
+                    <div class="dropdown">
+                        <button class="btn main-bg dropdown-toggle drop1" type="button" data-toggle="dropdown">
+                            التخصص
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button id="signupSubmit" type="submit" class="btn  btn-block col-md-4 fade1 reg-btn">ســجل</button>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="col-md-4"></div>
+
+    </div>
+</div>
+
+<!--#page content-->
+
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="lib/jquery.bootpag.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('.first').click();
+    });
+
+    $('.internal-content').bootpag({
+        total: 7,
+        page: 2,
+        maxVisible: 5,
+        leaps: false,
+        firstLastUse: true,
+        first: 'first',
+        last: 'last',
+        wrapClass: 'pagination',
+        activeClass: 'active',
+        disabledClass: 'disabled',
+        nextClass: 'next',
+        prevClass: 'prev',
+        lastClass: 'last',
+        firstClass: 'first'
+
+    }).on("page", function (event, num) {
+
+        $(".internal_page").load("InternalPage.html #" + num);
+    }).find('.pagination');
+</script>
+<script>
+    $(function () {
+
+        $('.list-group-item').on('click', function () {
+            $('.glyphicon', this)
+                    .toggleClass('glyphicon-chevron-right')
+                    .toggleClass('glyphicon-chevron-down');
+        });
+
+    });
+</script>
+<footer>
+    <div class="footer" align="center">
+        <ul class="list-inline">
+            <li class="soical-icon soical-icon1 "></li>
+            <li class="soical-icon soical-icon2"></li>
+            <li class="soical-icon soical-icon3"></li>
+            <li class="soical-icon soical-icon4"></li>
+        </ul>
+        <ul class="list-inline ">
+            <li><img src="img/v1.png" class="pay" alt=""></li>
+            <li><img src="img/v2.png" class="pay" alt=""></li>
+            <li><img src="img/v3.png" class="pay" alt=""></li>
+        </ul>
+        <p>
+            © 2016 subopp. All rights reserved.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

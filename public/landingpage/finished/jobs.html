@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel='stylesheet prefetch' href='css/jasny-bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='css/star-rating.min.css'>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-rtl.min.css">
+    <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css'>
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+</head>
+<body class="gray-bg">
+
+
+<!-- Modal : creat team -->
+<div id="CreatTeam-popup" class="modal fade main-modal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div class=" col-md-3">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail" style="width:132px; height: 132px;">
+                                <img src="img/avatar.png" alt="...">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 132px; max-height: 132px;"></div>
+                            <div>
+                                <span class="btn btn-default btn-file main-bg"><span
+                                        class="fileinput-new">Select image</span><span
+                                        class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                                <a href="#" class="btn btn-default fileinput-exists main-bg" data-dismiss="fileinput">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="اسم الفريق">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="2" id="comment"
+                                      placeholder="نبذة عن الفريق"></textarea>
+                        </div>
+                        <div class="form-group text-right ">
+                            <div class="form-group text-right ">
+                                <select multiple placeholder="المهارات المطلوبة ">
+                                    <option value="0">Zero</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                    <option value="4">Four</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn  main-bg">إنشاء</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- #Modal : creat team -->
+<!-- Modal : addJop  -->
+<div id="AddJop-popup" class="modal fade main-modal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3 class="text-right bold-font">إضافة وظيفـة</h3>
+
+                <form>
+                    <div class="form-group col-sm-4">
+                        <input type="text" class="form-control" placeholder="عنوان الوظيفة">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <input type="number" class="form-control" placeholder="السعر">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <input type="number" class="form-control" placeholder="المدة">
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <textarea class="form-control" rows="2" id="comment2" placeholder="نبذة عن الفريق"></textarea>
+                    </div>
+                    <div class="form-group text-right  col-xs-12">
+                        <div class=" text-right ">
+                            <select multiple placeholder="المهارات المطلوبة">
+                                <option value="0">Zero</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                                <option value="4">Four</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn  main-bg fade1">إضافـة</button>
+
+                    <div class="pull-right"><label class="btn main-bg fade1" for="my-file-selector">
+                        <input id="my-file-selector" type="file" style="display:none;"
+                               onchange="$('#upload-file-info').html($(this).val());">
+                        <i class="fa fa-paperclip" aria-hidden="true"></i>
+                        إرفاق ملف
+                    </label>
+                        <span class='label label-info' id="upload-file-info"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- #Modal : addJop -->
+<!--nav-->
+<div id="menu2">
+    <nav class="navbar navbar-inverse">
+        <div class="container" align="center">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="img/wight-logo.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="divider-right hidden-sm hidden-xs"></li>
+
+                    <li><a href="#" data-toggle="modal" data-target="#CreatTeam-popup"><span><img
+                            src="img/team-icon.png" alt=""/></span>
+                        إنشاء فريق
+                    </a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#AddJop-popup"><span><img src="img/jop-icon.png"
+                                                                                               alt=""/></span>
+                        إنشاء وظيفة
+                    </a></li>
+                    <li class="divider-left hidden-sm hidden-xs"></li>
+
+                    <li>
+                        <div class="form-group inner-addon right-addon">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </li>
+                    <li class="divider-right hidden-sm hidden-xs"></li>
+                    <li><a href="#"><span class="notify"></span><img src="img/notafication-icoc.png" alt=""/></a></li>
+                    <li><a href="#"><span class="notify"></span><img src="img/message-icon.png" alt=""/></a></li>
+                    <li class="divider-left hidden-sm hidden-xs"></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">سائد أبو ميعلق <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" style="padding-left:0"><img src="img/user1.png" class="img-circle" width="46"
+                                                                height="46" alt=""/></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--#nav-->
+<!--page content-->
+<div class="container" align="center">
+    <div class="row">
+        <div class="col-md-3 ">
+            <div class="wight-bg user-list ">
+                <div class="user-img" style="background: url(img/img2.png) center 0;">
+                    <div class="user-overlay fade1" align="center">
+                        <i class="fa fa-camera" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <h2 class="bold-font">
+                    امجد أبو عويضة
+                </h2>
+                <small>
+                    مصمم ويب وموبايل
+                </small>
+                <small>
+                    غزة -فلسطين
+                </small>
+                <!-- star rating-->
+                <form class="ltr-dir" style="display: table ">
+                    <input type="text" class="kv-fa rating-loading" value="2" dir="rtl" data-size="xs" title="">
+
+                    <div class="clearfix"></div>
+                </form>
+                <!--#star rating -->
+                <div class="list-group list-group-root well">
+
+                    <a href="#item-1" class="list-group-item bold-font" data-toggle="collapse">
+
+                        حسابي الشخصي
+                        <i class="glyphicon glyphicon-chevron-left pull-left"></i>
+                    </a>
+
+                    <div class="list-group collapse" id="item-1">
+
+                        <a class="list-group-item" href="">وظائفي</a>
+                        <a class="list-group-item" href="">فريقي</a>
+                        <a class="list-group-item" href="">حسابي المالي</a>
+
+                    </div>
+
+                    <a href="#item-2" class="list-group-item bold-font" data-toggle="collapse">
+                        الوظائف
+                        <i class="glyphicon glyphicon-chevron-left pull-left"></i>
+                    </a>
+
+                    <div class="list-group collapse" id="item-2">
+
+                        <a class="list-group-item" href="">المهام</a>
+                        <a class="list-group-item" href="">المشاريع</a>
+                    </div>
+
+                    <a href="#item-3" class="list-group-item bold-font" data-toggle="collapse">
+                        الأعضاء
+                        <i class="glyphicon glyphicon-chevron-left pull-left"></i>
+                    </a>
+
+                    <div class="list-group collapse" id="item-3">
+
+                        <a class="list-group-item" href="">الأعضاء 1.1</a>
+                        <a class="list-group-item" href="">الأعضاء 1.1</a>
+                        <a class="list-group-item" href="">الأعضاء 1.1</a>
+
+                    </div>
+
+                    <a href="#item-4" class="list-group-item bold-font" data-toggle="collapse">
+                        الفرق
+                        <i class="glyphicon glyphicon-chevron-left pull-left "></i>
+                    </a>
+
+                    <div class="list-group collapse" id="item-4">
+
+                        <a class="list-group-item" href="">Item 1.1</a>
+                        <a class="list-group-item" href="">Item 1.1</a>
+                        <a class="list-group-item" href="">Item 1.1</a>
+
+                    </div>
+
+                    <a href="#item-5" class="list-group-item bold-font" data-toggle="collapse">
+                        المجتمعات
+                        <i class="glyphicon glyphicon-chevron-left pull-left"></i>
+                    </a>
+
+                    <div class="list-group collapse" id="item-5">
+
+                        <a class="list-group-item" href="">Item 1.1</a>
+                        <a class="list-group-item" href="">Item 1.1</a>
+                        <a class="list-group-item" href="">Item 1.1</a>
+
+                    </div>
+
+                    <a href="#item-6" class="list-group-item bold-font" data-toggle="collapse">
+                        عنوان
+                        <i class="glyphicon glyphicon-chevron-left pull-left"></i>
+                    </a>
+
+                    <div class="list-group collapse" id="item-6">
+
+                        <a class="list-group-item" href="">Item 1.1</a>
+                        <a class="list-group-item" href="">Item 1.1</a>
+                        <a class="list-group-item" href="">Item 1.1</a>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 ">
+            <div class="wight-bg JobsPage">
+                <div class="panel-group serach-panel" align="right">
+                    <div class="panel ">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="text-right bold-font protfolio-tit search-collapss collapsed "
+                                   data-toggle="collapse" href="#collapse1">
+                                    بحث حسب
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <label>الوقت الازم
+                                            <select>
+                                                <option value="0">
+                                                    غير محدد
+                                                </option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>الســعر
+                                            <select>
+                                                <option value="0">
+                                                    غير محدد
+                                                </option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                            </select>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>وقت الأضافة
+                                            <select>
+                                                <option value="0">
+                                                    غير محدد
+                                                </option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                            </select>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>المصدر
+                                            <select>
+                                                <option value="0">
+                                                    غير محدد
+                                                </option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                            </select>
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="  table-responsive-vertical shadow-z-1table-responsive-vertical shadow-z-1">
+                    <table id="table" class="table  ">
+                        <tbody id="accordion">
+
+
+
+                        <tr data-toggle="collapse" data-parent="#accordion" href="#collapse-job1">
+                            <td class="text-right">
+
+                                <h2>
+                                    تصميم موقع ألكتروني
+                                </h2>
+                                <ul class="list-inline">
+                                    <li>
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                                <span>
+                                                    بواسطة:
+                                                </span>
+                                        امجد امجد
+                                    </li>
+                                    <li><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        منذ ساعة
+                                    </li>
+                                    <li><i class="fa fa-paperclip" aria-hidden="true"></i>
+                                        ملفات مرفقة
+                                    </li>
+                                </ul>
+
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled list2">
+                                    <li>الســعر</li>
+                                    <li>400$</li>
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled list2">
+                                    <li>المدة</li>
+                                    <li>20<span>يوم</span></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- collapse:more info-->
+                        <tr >
+                            <td colspan="6" class="hiddenRow">
+                                <div id="collapse-job1" class="panel-collapse collapse in">
+                                    <div class=" table-responsive-vertical shadow-z-1table-responsive-vertical shadow-z-1">
+                                        <table class="table  ">
+                                            <tr>
+                                                <td class="text-right " style="width: 69%">
+                                                    <p>
+                                                        هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد
+                                                        هذا
+                                                        النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو
+                                                        العديد
+                                                        من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق
+                                                    </p>
+                                                    <ul class="list-inline lable-skills">
+                                                        <li><a href=""> <span class="label label-default">Logo Design</span></a>
+                                                        </li>
+                                                        <li><a href=""> <span class="label label-default">Default </span></a>
+                                                        </li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                    </ul>
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" class="form-control" placeholder="سعر المشروع ">
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" class="form-control" placeholder=" مدة لمشروع">
+
+                                                    <button type="submit" class="btn  main-bg fade1">تقدم</button>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- #collapse:more info-->
+                        <tr data-toggle="collapse" data-parent="#accordion" href="#collapse-job2">
+                            <td class="text-right">
+
+                                <h2>
+                                    تصميم موقع ألكتروني
+                                </h2>
+                                <ul class="list-inline">
+                                    <li>
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                                <span>
+                                                    بواسطة:
+                                                </span>
+                                        امجد امجد
+                                    </li>
+                                    <li><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        منذ ساعة
+                                    </li>
+                                    <li><i class="fa fa-paperclip" aria-hidden="true"></i>
+                                        ملفات مرفقة
+                                    </li>
+                                </ul>
+
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled list2">
+                                    <li>الســعر</li>
+                                    <li>400$</li>
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled list2">
+                                    <li>المدة</li>
+                                    <li>20<span>يوم</span></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- collapse:more info-->
+                        <tr >
+                            <td colspan="6" class="hiddenRow">
+                                <div id="collapse-job2" class="panel-collapse collapse ">
+                                    <div class=" table-responsive-vertical shadow-z-1table-responsive-vertical shadow-z-1">
+                                        <table class="table  ">
+                                            <tr>
+                                                <td class="text-right " style="width: 69%">
+                                                    <p>
+                                                        هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد
+                                                        هذا
+                                                        النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو
+                                                        العديد
+                                                        من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق
+                                                    </p>
+                                                    <ul class="list-inline lable-skills">
+                                                        <li><a href=""> <span class="label label-default">Logo Design</span></a>
+                                                        </li>
+                                                        <li><a href=""> <span class="label label-default">Default </span></a>
+                                                        </li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                    </ul>
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" class="form-control" placeholder="سعر المشروع ">
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" class="form-control" placeholder=" مدة لمشروع">
+
+                                                    <button type="submit" class="btn  main-bg fade1">تقدم</button>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- #collapse:more info-->
+
+
+                        <tr data-toggle="collapse" data-parent="#accordion" href="#collapse-job3">
+                            <td class="text-right">
+
+                                <h2>
+                                    تصميم موقع ألكتروني
+                                </h2>
+                                <ul class="list-inline">
+                                    <li>
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                                <span>
+                                                    بواسطة:
+                                                </span>
+                                        امجد امجد
+                                    </li>
+                                    <li><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        منذ ساعة
+                                    </li>
+                                    <li><i class="fa fa-paperclip" aria-hidden="true"></i>
+                                        ملفات مرفقة
+                                    </li>
+                                </ul>
+
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled list2">
+                                    <li>الســعر</li>
+                                    <li>400$</li>
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled list2">
+                                    <li>المدة</li>
+                                    <li>20<span>يوم</span></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- collapse:more info-->
+                        <tr >
+                            <td colspan="6" class="hiddenRow">
+                                <div id="collapse-job3" class="panel-collapse collapse ">
+                                    <div class=" table-responsive-vertical shadow-z-1table-responsive-vertical shadow-z-1">
+                                        <table class="table  ">
+                                            <tr>
+                                                <td class="text-right " style="width: 69%">
+                                                    <p>
+                                                        هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد
+                                                        هذا
+                                                        النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو
+                                                        العديد
+                                                        من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق
+                                                    </p>
+                                                    <ul class="list-inline lable-skills">
+                                                        <li><a href=""> <span class="label label-default">Logo Design</span></a>
+                                                        </li>
+                                                        <li><a href=""> <span class="label label-default">Default </span></a>
+                                                        </li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                    </ul>
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" class="form-control" placeholder="سعر المشروع ">
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" class="form-control" placeholder=" مدة لمشروع">
+
+                                                    <button type="submit" class="btn  main-bg fade1">تقدم</button>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- #collapse:more info-->
+
+                        <tr data-toggle="collapse" data-parent="#accordion" href="#collapse-job4">
+                            <td class="text-right">
+
+                                <h2>
+                                    تصميم موقع ألكتروني
+                                </h2>
+                                <ul class="list-inline">
+                                    <li>
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                                <span>
+                                                    بواسطة:
+                                                </span>
+                                        امجد امجد
+                                    </li>
+                                    <li><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        منذ ساعة
+                                    </li>
+                                    <li><i class="fa fa-paperclip" aria-hidden="true"></i>
+                                        ملفات مرفقة
+                                    </li>
+                                </ul>
+
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled list2">
+                                    <li>الســعر</li>
+                                    <li>400$</li>
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled list2">
+                                    <li>المدة</li>
+                                    <li>20<span>يوم</span></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- collapse:more info-->
+                        <tr >
+                            <td colspan="6" class="hiddenRow">
+                                <div id="collapse-job4" class="panel-collapse collapse ">
+                                    <div class=" table-responsive-vertical shadow-z-1table-responsive-vertical shadow-z-1">
+                                        <table class="table  ">
+                                            <tr>
+                                                <td class="text-right " style="width: 69%">
+                                                    <p>
+                                                        هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد
+                                                        هذا
+                                                        النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو
+                                                        العديد
+                                                        من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق
+                                                    </p>
+                                                    <ul class="list-inline lable-skills">
+                                                        <li><a href=""> <span class="label label-default">Logo Design</span></a>
+                                                        </li>
+                                                        <li><a href=""> <span class="label label-default">Default </span></a>
+                                                        </li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                    </ul>
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" class="form-control" placeholder="سعر المشروع ">
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" class="form-control" placeholder=" مدة لمشروع">
+
+                                                    <button type="submit" class="btn  main-bg fade1">تقدم</button>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- #collapse:more info-->
+                        <tr data-toggle="collapse" data-parent="#accordion" href="#collapse-job5">
+                            <td class="text-right">
+
+                                <h2>
+                                    تصميم موقع ألكتروني
+                                </h2>
+                                <ul class="list-inline">
+                                    <li>
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                                <span>
+                                                    بواسطة:
+                                                </span>
+                                        امجد امجد
+                                    </li>
+                                    <li><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        منذ ساعة
+                                    </li>
+                                    <li><i class="fa fa-paperclip" aria-hidden="true"></i>
+                                        ملفات مرفقة
+                                    </li>
+                                </ul>
+
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled list2">
+                                    <li>الســعر</li>
+                                    <li>400$</li>
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled list2">
+                                    <li>المدة</li>
+                                    <li>20<span>يوم</span></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- collapse:more info-->
+                        <tr >
+                            <td colspan="6" class="hiddenRow">
+                                <div id="collapse-job5" class="panel-collapse collapse ">
+                                    <div class=" table-responsive-vertical shadow-z-1table-responsive-vertical shadow-z-1">
+                                        <table class="table  ">
+                                            <tr>
+                                                <td class="text-right " style="width: 69%">
+                                                    <p>
+                                                        هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد
+                                                        هذا
+                                                        النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو
+                                                        العديد
+                                                        من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق
+                                                    </p>
+                                                    <ul class="list-inline lable-skills">
+                                                        <li><a href=""> <span class="label label-default">Logo Design</span></a>
+                                                        </li>
+                                                        <li><a href=""> <span class="label label-default">Default </span></a>
+                                                        </li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                        <li><a href=""> <span class="label label-default"> Label</span></a></li>
+                                                    </ul>
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" class="form-control" placeholder="سعر المشروع ">
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" class="form-control" placeholder=" مدة لمشروع">
+
+                                                    <button type="submit" class="btn  main-bg fade1">تقدم</button>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- #collapse:more info-->
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="pagination " >
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--#page content-->
+
+<script src='js/jquery.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jasny-bootstrap.min.js"></script>
+<script src="js/star-rating.js"></script>
+<script type="text/javascript" src="lib/jquery.bootpag.js"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/js/standalone/selectize.min.js'></script>
+
+<script>
+    $(document).on('ready', function () {
+        $('table .collapse').on('show.bs.collapse', function () {
+            $('table .collapse.in').collapse('hide');
+
+        });
+        $('.kv-fa').rating({
+            theme: 'krajee-fa',
+            filledStar: '<i class="fa fa-star"></i>',
+            emptyStar: '<i class="fa fa-star-o"></i>'
+        });
+
+        $('.rating,.kv-fa').on(
+                'change', function () {
+                    console.log('Rating selected: ' + $(this).val());
+                });
+    });
+</script>
+<script>
+    $(function () {
+        $('select').selectize({});
+    });
+    $(function () {
+
+        $('.list-group-item').on('click', function () {
+            $('.glyphicon', this)
+                    .toggleClass('glyphicon-chevron-right')
+                    .toggleClass('glyphicon-chevron-down');
+        });
+
+    });
+</script>
+<footer>
+    <div class="footer" align="center">
+        <ul class="list-inline">
+            <li class="soical-icon soical-icon1 "></li>
+            <li class="soical-icon soical-icon2"></li>
+            <li class="soical-icon soical-icon3"></li>
+            <li class="soical-icon soical-icon4"></li>
+        </ul>
+        <ul class="list-inline ">
+            <li><img src="img/v1.png" class="pay" alt=""></li>
+            <li><img src="img/v2.png" class="pay" alt=""></li>
+            <li><img src="img/v3.png" class="pay" alt=""></li>
+        </ul>
+        <p>
+            © 2016 subopp. All rights reserved.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

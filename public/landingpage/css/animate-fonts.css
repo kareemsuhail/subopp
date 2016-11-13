@@ -1,0 +1,32 @@
+/* =Simple animation up */
+.no-touch .slideInUp {
+    visibility: hidden;
+    opacity: .1;
+    -webkit-transition: all 1.5s ease-in-out;
+    transition: all 1.5s ease-in-out;
+    transform: scale(1);
+    webkit-transform: scale(1);
+}
+
+.no-touch .is-active .slideInUp {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1.07)
+
+}
+
+.slideInUp.slideInUp2 {
+    -webkit-transition: all 1.5s ease-in-out;
+    transition: all 1.5s ease-in-out;
+}
+
+.slideInUp.slideInUp3 {
+    -webkit-transition-delay: .4s;
+    transition-delay: .4s;
+
+}
+.slideInUp.slideInUp4 {
+    -webkit-transition-delay: .6s;
+    transition-delay: .6s;
+}
+

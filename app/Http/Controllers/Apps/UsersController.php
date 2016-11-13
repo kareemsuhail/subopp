@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Apps;
 use App\Http\Controllers\Apps\Controller;
 
+use App\Team;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUsersRequest;
@@ -22,7 +23,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        
+        $team = Team::where('user_id',Auth::user()->id)->get();
         $sitetitle="الأعضاء";
         $spicals=Spical::get();
         $skills=Skill::get();
@@ -30,7 +31,8 @@ class UsersController extends Controller
         $UserProfile =UsersProfile::where('user_id',$userid)->first();
         $users=UsersProfile::orderBy('id', 'desc')->paginate(5);
         $users->setPath('users');
-        return view('apps.users', compact('sitetitle','skills','spicals','UserProfile','users'));
+
+        return view('apps.users', compact('sitetitle','skills','spicals','UserProfile','users','team'));
 
     }
 

@@ -61,6 +61,7 @@ class TeamsController extends Controller
         $UserProfile =UsersProfile::where('user_id',$userid)->first();
         $spicals=Spical::get();
         $skills=Skill::get();
+
         $sitetitle=$team->name;
         return view('apps.teamprofile', compact('sitetitle','skills','spicals','UserProfile','team'));
 

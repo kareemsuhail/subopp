@@ -23,6 +23,7 @@ Route::post('/app/updatemyskillsprofile', 'Apps\UsersProfilesController@updatesk
 Route::post('/app/creat/bid','Apps\BidsController@store');
 Route::get('app/adduserprotfolio', 'Apps\ProrfoliosController@createuserprorfolio');
 Route::post('app/storeuserprotfolio', 'Apps\ProrfoliosController@store');
+Route::post('app/sendrequest', 'RequestController@store');
 
 
 Route::get('/admin', function () {

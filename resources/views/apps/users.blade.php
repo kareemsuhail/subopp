@@ -115,9 +115,13 @@
                                 @endforeach
 
                             </ul>
+                            <form method="post" action="{{url("app/sendrequest")}}">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="team_id" value="{{$team[0]->id}}">
+                                <input type="hidden" name="reciver_id" value="{{ $user->user->id }}">
 
                             <button class="btn main-bg fad1">رسالة</button>
-                            <button class="btn blue-bg fade1">دعوة</button>
+                          <input type="submit" class="btn blue-bg fade1" value="دعوة"> </form>
                         </div>
                     </div>
 

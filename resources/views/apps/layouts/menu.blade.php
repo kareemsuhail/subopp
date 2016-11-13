@@ -39,7 +39,7 @@
                     <img src="{{ url('landingpage') }}/img/notafication-icoc.png" alt=""/></a>
 
                     <ul class="dropdown-menu notification-menu " >
-                        
+                         @foreach($requests as $request)
                             <li class="notification">
                                 <div class="media">
                                     <div class="media-left media-top">
@@ -52,13 +52,12 @@
                                         <p class="notification-desc">
 قام
                                             <span>
-                                                محمد ابو عويضة
+                                              {{$request->name}}
                                             </span>
-                                            بقبول طلبك لوظيفة
-                                            <span>
-                                                تصميم ويب
-                                            </span>
-هذا النص هو
+                                         بدعةتك للانضمام لفريقه
+                                           
+
+
                                         </p>
 
 
@@ -70,7 +69,7 @@
                                     </div>
                                 </div>
                             </li>
-
+                             @endforeach
                              
                         </ul>
                     </li>

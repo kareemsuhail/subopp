@@ -99,10 +99,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{url("app/users")}}">
+
                                         <div class="team-img" style="background:#32b38c">
                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                         </div>
+
                                     </a>
                                 </li>
 
